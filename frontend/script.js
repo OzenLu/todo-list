@@ -168,3 +168,35 @@ addTodo.addEventListener("click", () =>{
         adicionar_tarefa();
     }
 });
+
+const toggleThemeBtn = document.getElementById('toggle-theme');
+
+toggleThemeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+});
+
+toggleThemeBtn = document.getElementById('toggle-theme');
+
+// Função para aplicar o tema salvo
+function applySavedTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark');
+    } else {
+        document.body.classList.remove('dark');
+    }
+}
+
+// Alternar e salvar o tema
+toggleThemeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+
+    if (document.body.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+// Chamar ao carregar a página
+applySavedTheme();

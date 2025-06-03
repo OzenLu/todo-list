@@ -213,3 +213,66 @@ select {
     transform: scale(1.1);
     box-shadow: 0 0 10px rgba(252, 27, 2, 0.927);
 }
+
+/* Tema escuro */
+body.dark {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark h1 {
+    color: #42aeec;
+}
+
+body.dark #input-todo,
+body.dark #edit-todo-name,
+body.dark select {
+    background-color: #1e1e1e;
+    color: white;
+    border: 1px solid #7678f1;
+}
+
+body.dark #add-todo,
+body.dark #save-todo {
+    background-color: #7678f1;
+    color: white;
+}
+
+body.dark .todo {
+    background-color: #060886;
+    color: white;
+}
+
+body.dark .modal {
+    background-color: #1e1e1e;
+    border-color: #42aeec;
+}
+
+body.dark .close-modal {
+    color: #bbb;
+}
+
+body.dark .todo-editar:hover {
+    background-color: #42aeec;
+    box-shadow: 0 0 10px #42aeec;
+}
+
+body.dark .todo-deletar:hover {
+    background-color: #e74c3c;
+    box-shadow: 0 0 10px #e74c3c;
+}
+#toggle-theme {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #060886;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+#toggle-theme:hover {
+    background-color: #42aeec;
+}
