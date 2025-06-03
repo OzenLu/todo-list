@@ -15,17 +15,20 @@ const tarefas = [
     {
         id:1,
         titulo:"Fazer atividade de XP",
-        completa: false
+        completa: false,
+        categoria: "Estudos"
     },
     {
         id:2,
         titulo:"Estudar Node",
-        completa: false
+        completa: false,
+        categoria: "Estudos"
     },
     {
         id:3,
         titulo:"Entregar relatório de vendas",
-        completa: true
+        completa: true,
+        categoria: "Trabalho"
     },
 ]
 
@@ -43,7 +46,12 @@ app.get('/tarefas/:id', (req, res) => {
 })
 
 app.post('/tarefas', (req, res) => {
-    tarefas.push({ id:uuid.v4(), ...req.body});
+    tarefas.push({
+        id: uuid.v4(),
+        titulo: req.body.titulo,
+        completa: req.body.completa || false,
+        categoria: req.body.categoria || "Geral"
+    });
     res.json({msg: "tarefa criada", data: tarefas});
 })
 
@@ -53,6 +61,7 @@ app.put('/tarefas/:id', (req, res) => {
     if (tarefa) {
         tarefa.titulo = req.body.titulo;
         tarefa.completa = req.body.completa;
+        tarefa.categoria = req.body.categoria;
         res.json({msg: "tarefa atualizada", data: tarefas});
     }else {
         res.json({msg: "tarefa não encontrada"});

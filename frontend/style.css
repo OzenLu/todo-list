@@ -136,3 +136,16 @@ body{
     height: 40px;
     border-radius: 20px;
 }
+
+.categoria {
+    font-size: 1rem;
+    color: #555;
+    font-style: italic;
+}
+
+select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}

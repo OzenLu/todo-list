@@ -34,6 +34,7 @@ async function adicionar_tarefa() {
             body: JSON.stringify({
                 titulo: inputTodo.value,
                 completa: false,
+                categoria: document.getElementById("input-categoria").value
             })
         };
         const resp = await fetch(URL, options);
@@ -74,6 +75,7 @@ async function editar_tarefa(tarefasElem) {
                 id: tarefasElem.id,
                 titulo: editarNomeTarefa.value,
                 completa: editarTarefaCompleta.checked,
+                categoria: document.getElementById("edit-todo-categoria").value
             })
         };
         const resp = await fetch(edit_url, options);
@@ -87,6 +89,7 @@ async function editar_tarefa(tarefasElem) {
 function open_modal(tarefasElem){
     editarNomeTarefa.value = tarefasElem.titulo;
     editarTarefaCompleta.checked = tarefasElem.completa;
+    document.getElementById("edit-todo-categoria").value = tarefasElem.categoria;
     modalBG.style.display = "block";
     closeModal.addEventListener("click", ()=> {
         modalBG.style.display = "none";
@@ -98,6 +101,7 @@ function open_modal(tarefasElem){
 }
 
 function display_Tarefas(todoArr){
+    todoContainer.innerHTML = "";
     todoArr.forEach((tarefasElem) => {
         console.log(tarefasElem);
 
@@ -120,7 +124,8 @@ function display_Tarefas(todoArr){
         let todoName = document.createElement("p");
         todoName.classList.add("todo-titulo");
         todoName.innerHTML = tarefasElem.titulo;
-
+        todoName.innerHTML = `${tarefasElem.titulo} <span class="categoria">(${tarefasElem.categoria})</span>`;
+        
         let todoEdit = document.createElement("button");
         todoEdit.classList.add("todo-editar");
         todoEdit.innerHTML = "Editar";
